@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.summary = "HTML Attributes utilities for use with ViewComponents"
   spec.homepage = "https://github.com/katalyst/html-attributes"
   spec.license = "MIT"
-  spec.required_ruby_version = ">= 3.2"
+  spec.required_ruby_version = ">= 3.0"
 
   spec.files = Dir["{lib/katalyst}/**/*", "LICENSE", "README.md"]
   spec.require_paths = ["lib"]
