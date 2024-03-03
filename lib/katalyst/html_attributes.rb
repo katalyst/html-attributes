@@ -10,15 +10,15 @@ module Katalyst
       using HasHtmlAttributes
 
       def define_html_attribute_methods(name, default: {})
-        define_method("default_#{name}") { default }
-        private("default_#{name}")
+        define_method(:"default_#{name}") { default }
+        private(:"default_#{name}")
 
         define_method(name) do
-          send("default_#{name}").merge_html(instance_variable_get("@#{name}") || {})
+          send(:"default_#{name}").merge_html(instance_variable_get(:"@#{name}") || {})
         end
 
-        define_method("#{name}=") do |options|
-          instance_variable_set("@#{name}", options.slice(:id, :aria, :class, :data).merge(options.fetch(:html, {})))
+        define_method(:"#{name}=") do |options|
+          instance_variable_set(:"@#{name}", options.slice(:id, :aria, :class, :data).merge(options.fetch(:html, {})))
         end
       end
     end
