@@ -7,4 +7,6 @@ AllCops:
   TargetRubyVersion: 3.0
   Exclude:
     - bin/*
+    - node_modules/**/*
+    - vendor/bundle/**/*
   NewCops: enable
