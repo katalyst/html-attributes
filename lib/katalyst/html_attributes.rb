@@ -6,9 +6,13 @@ module Katalyst
   module HtmlAttributes
     extend ActiveSupport::Concern
 
-    class_methods do
-      using HasHtmlAttributes
+    using HasHtmlAttributes
 
+    def self.options_to_html_attributes(options)
+      options.slice(:id, :aria, :class, :data).merge_html(options.fetch(:html, {}))
+    end
+
+    class_methods do
       def define_html_attribute_methods(name, default: {})
         define_method(:"default_#{name}") { default }
         private(:"default_#{name}")
@@ -18,7 +22,14 @@ module Katalyst
         end
 
         define_method(:"#{name}=") do |options|
-          instance_variable_set(:"@#{name}", options.slice(:id, :aria, :class, :data).merge(options.fetch(:html, {})))
+          instance_variable_set(:"@#{name}", HtmlAttributes.options_to_html_attributes(options))
+        end
+
+        define_method(:"update_#{name}") do |**options, &block|
+          attributes = instance_variable_get(:"@#{name}") || {}
+          attributes = attributes.merge_html(HtmlAttributes.options_to_html_attributes(options))
+          attributes = yield(attributes) if block
+          instance_variable_set(:"@#{name}", attributes)
         end
       end
     end

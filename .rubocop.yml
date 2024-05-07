@@ -10,3 +10,6 @@ AllCops:
     - node_modules/**/*
     - vendor/bundle/**/*
   NewCops: enable
+
+RSpec/ExampleLength:
+  Max: 10
