@@ -1,8 +1,9 @@
 require:
   - rubocop-katalyst
 
+inherit_mode:
+  merge:
+    - Exclude
+
 AllCops:
   TargetRubyVersion: 3.0
-
-RSpec/ExampleLength:
-  Max: 10
