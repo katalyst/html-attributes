@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
-require_relative "html_attributes/has_html_attributes"
-
 module Katalyst
   module HtmlAttributes
+    extend ActiveSupport::Autoload
     extend ActiveSupport::Concern
+
+    autoload :HasHtmlAttributes
 
     using HasHtmlAttributes
 
