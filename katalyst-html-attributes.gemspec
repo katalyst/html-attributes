@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |spec|
   spec.name    = "katalyst-html-attributes"
-  spec.version = "1.1.1"
+  spec.version = "1.1.2"
   spec.authors = ["Katalyst Interactive"]
   spec.email   = ["developers@katalyst.com.au"]
 
