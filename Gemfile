@@ -4,6 +4,7 @@ source "https://rubygems.org"
 
 gemspec
 
+gem "brakeman", require: false
 gem "rake"
 gem "rubocop-katalyst", require: false
 
