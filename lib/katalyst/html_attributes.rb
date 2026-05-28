@@ -14,7 +14,7 @@ module Katalyst
 
     class_methods do
       def define_html_attribute_methods(name, default: {})
-        ivar = :"@#{name}"
+        ivar           = :"@#{name}"
         default_method = :"default_#{name}"
         define_method(default_method) { default.deep_dup }
         private(default_method)
